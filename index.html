@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <!--Style For Camera-->
+    <link href='css/webCamPhotoVideo.css' rel='stylesheet' />
+</head>
+
+<body>
+    <div class="myCamera">
+        <div class="title">
+            <h4>Simple WebCamera Html5 Javascript</h4>
+        </div>
+
+        <div class="camStrem">
+            <video class="vd" id="video">Video stream not available.</video>
+        </div>
+
+        <div class="camTakeRec">
+            <div class="takePhoto">
+                <button id="openbuttonPhoto" class="button">Open Camera For Photo Shooting</button>
+                <button id="photobutton" class="button">Take Photo</button>
+                <button id="stopPhoto">Stop webcam Photo And Close</button>
+                <button id="clearPhoto">Clear</button>
+                <a id="download-photo" download="test.jpg">Download photo</a>
+                <canvas class="cv" id="canvas"></canvas>
+                <p><img class="img" id="photo" />
+                    <input type="hidden" id="hidImg" />
+                </p>
+            </div>
+
+            <div class="recVideo">
+                <button id="openbuttonVideo" class="button">Open Camera For Video Recording</button>
+                <button id="startButton" class="button">Record Video</button>
+                <button id="stopRecord">Stop webcam Recording</button>
+                <button id="clearVideo">Clear</button>
+                <a id="download-video" download="test.mp4">Download Video</a>
+                <p><video id="recording" class="vidRec" controls></video>
+                    <input type="hidden" id="hidVid" />
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h5>Stavros Vourliotis @copyright 2007-2021 The Space Lion Gr Net</h5>
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // variables for elements
+            let video = document.getElementById('video');
+            let canvas = document.getElementById('canvas');
+            let photo = document.getElementById('photo');
+            let recording = document.getElementById("recording");
+            let hidImg = document.getElementById("hidImg");
+            let hidVid = document.getElementById("hidVid");
+
+            //Button To Open Camera for Photo
+            $("#openbuttonPhoto").click(function() {
+                webcamPhoto(500, 375);
+            });
+
+            //Button To Take Photo
+            $("#photobutton").click(function() {
+                takepicture(500, 375);
+            });
+
+            //Button To Stop Photo
+            $("#stopPhoto").click(function() {
+                imgOff();
+                video.srcObject = null;
+            });
+
+            //Button To Clear Photo
+            $("#clearPhoto").click(function() {
+                $('#photo').attr("src", "empty.png");
+            });
+
+            //Button To Open Camera for Video
+            $("#openbuttonVideo").click(function() {
+                webcamVideo(500, 375);
+            });
+
+            //Button To Record Video
+            $("#startButton").click(function() {
+                startRec();
+            });
+
+            //Button To Stop Record Video
+            $("#stopRecord").click(function() {
+                if (media_recorder == null) {
+                    alert("Video is empty");
+                } else {
+                    media_recorder.stop();
+                    vidOff();
+                    video.srcObject = null;
+                }
+            });
+
+
+            //Button To Clear Recorded Video
+            $("#clearVideo").click(function() {
+                camera_stream = null;
+                media_recorder = null;
+                streaming = false;
+                blobs_recorded = [];
+                $('#recording').attr("src", " ");
+            });
+        });
+    </script>
+
+    <!--Script For Camera-->
+    <script src="js/webCamPhotoVideo.js"></script>
+
+</body>
+
+</html>

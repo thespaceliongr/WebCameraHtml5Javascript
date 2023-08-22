@@ -1,0 +1,56 @@
+.title {
+    text-align: center;
+    color: blue;
+}
+
+.myCamera {
+    width: auto !important;
+    height: 100% !important;
+    margin: auto;
+    padding: 10px;
+}
+
+.camStrem {
+    width: 50% !important;
+    height: 100% !important;
+    margin: auto;
+    padding: 10px;
+}
+
+.camTakeRec {
+    display: flex;
+}
+
+.takePhoto {
+    width: 50% !important;
+    height: 100% !important;
+}
+
+.recVideo {
+    width: 50% !important;
+    height: 100% !important;
+}
+
+.cv {
+    display: none;
+}
+
+.img {
+    width: 50% !important;
+    height: 50% !important;
+}
+
+.vidRec {
+    width: 500px !important;
+    height: 375px !important;
+}
+
+.footer {
+    text-align: center;
+    background-color: cornflowerblue;
+    color: blue;
+    width: auto !important;
+    height: 100% !important;
+    margin: auto;
+    padding: 10px;
+}
